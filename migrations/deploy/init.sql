@@ -16,16 +16,24 @@ CHECK (value >= 0);
 CREATE DOMAIN posint AS int
 CHECK (value >= 0);
 
+CREATE DOMAIN pass AS text
+CHECK (value ~ '^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&? "]).*$')
+
 CREATE DOMAIN phone_number_fr AS text
-CHECK (value ~ '/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/
-')
+CHECK (value ~ '/^(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})$/')
+
+CREATE DOMAIN siren AS int
+CHECK (value ~ '^\d{14}$')
+
+CREATE DOMAIN siret AS int
+CHECK (value ~ '^\d{9}$')
 
 CREATE TABLE "user" (
   "id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  "mail" rfc_email NOT NULL,
-  "password" text NOT NULL,
-  "siret" text UNIQUE,
-  "siren" text UNIQUE,
+  "mail" rfc_email text NOT NULL,
+  "password" pass text NOT NULL,
+  "siret" siret int UNIQUE,
+  "siren" siren int UNIQUE,
   "name" text NOT NULL,
   "address" text NOT NULL,
   "zip_code" postal_code_fr NOT NULL,

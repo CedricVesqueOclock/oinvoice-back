@@ -15,6 +15,9 @@ DROP DOMAIN
   "postal_code_fr",
   "posnumeric",
   "posint",
-  "phone_number_fr";
+  "phone_number_fr",
+  "siret",
+  "siren",
+  "pass";
 
 COMMIT;
