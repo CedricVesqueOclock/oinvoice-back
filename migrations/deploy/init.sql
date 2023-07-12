@@ -2,8 +2,9 @@
 -- Deploy Gestionnaire-De-Cliente-Et-Facture-Back:init to pg
 
 -- SQLBook: Code
+-- le fichier sqitch deploy sert à mettre en place des modifications sur une base de donnée.
 BEGIN;
-
+-- Les créations de domaines consistent à crée des verifications sur les données acceptées dans les champs des tables associées.
 CREATE DOMAIN rfc_email AS text
 CHECK (value ~ '/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
 
@@ -27,7 +28,8 @@ CHECK (value ~ '^\d{14}$')
 
 CREATE DOMAIN siret AS int
 CHECK (value ~ '^\d{9}$')
-
+-- Ici on crée les tables correspondants aux différents utilisateur, ces dernières ont un nombre de caractéristique à definir à la création de celles-ci.
+-- Ces caractéristiques peuvent avoir des contraintes simple de définit directement (text, NOT NULL, UNIQUE) ou peuvent se servir de domaine pour des contraintes plus complexes.
 CREATE TABLE "user" (
   "id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   "mail" rfc_email text NOT NULL,
