@@ -1,5 +1,5 @@
 -- Verify Gestionnaire-De-Cliente-Et-Facture-Back:init on pg
--- Le fichier sqitch verify sert à vérifier que les tables que l'ont veut créer par le sqitch deploy sont bien crées
+-- Le fichier sqitch verify sert à vérifier que les modifications souhaités par le sqitch deploy sont bien effective.
 BEGIN;
 
 SELECT * FROM "user" WHERE false;
