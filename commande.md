@@ -9,7 +9,7 @@ Ces commandes initialisent le projet puis installe via NPM :
 - **express** qui permet de faire fonctionner le serveur 
 - **dotenv** qui permet l'usage d'un .env 
 - **pg** sert à indiquer à la base de donnée que l'on va se servir de la bibliothèque javascrypt PostgreSQL.
-- **cors** sert à filtrer l'acces des requetes d'autres domaines, il sert a proteger les utilisateurs de requetes malveillantes
+- **cors** sert à filtrer l'acces des requetes d'autres domaines, il permet de désigner les domaines de confiance
   
 ## Création de la bdd oinvoice (Création DB via Postgres (PSQL))
 
@@ -28,7 +28,7 @@ Ces commandes initialisent le projet puis installe via NPM :
 
 Pour lancer le script de seeding effectuer cette commande ``` psql -d oinvoice -f ./data/seeding.sql; ``` ou alors lancer le via les scripts npm
 
-## Instalation ESLINTRC
+## Installation ESLINTRC
 
 ``` eslint --init ``` 
 Sélectionner : 
