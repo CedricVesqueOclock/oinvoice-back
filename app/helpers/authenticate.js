@@ -43,7 +43,7 @@ export default {
       */
       return user;
     } catch (err) {
-      // En cas d'erreur de jwt (par exemple jwt expires) on renvoi juste rien.
+      // En cas d'erreur de jwt (par exemple jwt expires) on ne renvois rien.
       return null;
     }
   },

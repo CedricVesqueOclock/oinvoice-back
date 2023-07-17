@@ -3,13 +3,14 @@
 ## init package
 
 ```npm init -y```
-```npm i express dotenv pg cors```
+```npm i express dotenv pg cors bcrypt```
 
 Ces commandes initialisent le projet puis installe via NPM : 
 - **express** qui permet de faire fonctionner le serveur 
 - **dotenv** qui permet l'usage d'un .env 
 - **pg** sert à indiquer à la base de donnée que l'on va se servir de la bibliothèque javascrypt PostgreSQL.
 - **cors** sert à filtrer l'acces des requetes d'autres domaines, il permet de désigner les domaines de confiance
+- **bcrypt** permet l'encodage des mots de passe
   
 ## Création de la bdd oinvoice (Création DB via Postgres (PSQL))
 
