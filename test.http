@@ -1,0 +1,12 @@
+######################################################
+# Fichier de test des routes HTTP de l'API
+#######################################################
+
+@endpoint = http://localhost:{{$dotenv PORT}}/api
+
+#########################
+#      User       #
+#########################
+
+### liste des users
+GET {{ endpoint }}/user
