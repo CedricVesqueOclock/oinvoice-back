@@ -1,9 +1,10 @@
+-- SQLBook: Code
 BEGIN;
 
 TRUNCATE TABLE "user", "document", "client", "product", "document_line" RESTART IDENTITY CASCADE;
 
 -- Seed pour la table "user"
-INSERT INTO "user" ("mail", "password", "siret", "siren", "name", "address", "zip_code", "city", "number")
+INSERT INTO "user" ("mail", "password", "siret", "siren", "name", "adress", "zip_code", "city", "number")
 VALUES
   ('user1@gmail.co', 'Password123!', NULL, NULL, 'John Doe', '123 Main St', '12345', 'City1', '0634567890'),
   ('user2@gmail.co', 'SecurePassword456!', '123456789', '98765432115823', 'Jane Smith', '456 Elm St', '67890', 'City2', '0787654321');

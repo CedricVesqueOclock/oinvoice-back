@@ -23,7 +23,3 @@ module.exports = {
         return this.originalClient.query(...params);
     },
 };
-
-// var articulations = ['épaules', 'genoux'];
-// var corps = ['têtes', ...articulations, 'bras', 'pieds'];
-// console.log(corps)

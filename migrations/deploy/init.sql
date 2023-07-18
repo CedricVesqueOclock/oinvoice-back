@@ -1,3 +1,4 @@
+-- SQLBook: Code
 -- Deploy Gestionnaire-De-Cliente-Et-Facture-Back:init to pg
 
 -- le fichier sqitch deploy sert à mettre en place des modifications sur une base de donnée.
@@ -16,9 +17,6 @@ CHECK (value >= 0);
 CREATE DOMAIN posint AS int
 CHECK (value >= 0);
 
-CREATE DOMAIN pass AS text
-CHECK (value ~ '^.*(?=.{8,})(?=.*[a-zA-Z])(?=.*\d)(?=.*[!#$%&? "]).*$');
-
 CREATE DOMAIN phone_number_fr AS text
 CHECK (value ~ '(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}');
 
@@ -33,11 +31,11 @@ CHECK (value ~ '^\d{9}$');
 CREATE TABLE "user" (
   "id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   "mail" rfc_email NOT NULL,
-  "password" pass  NOT NULL,
+  "password" text NOT NULL,
   "siret" siret UNIQUE,
   "siren" siren UNIQUE,
   "name" text NOT NULL,
-  "address" text NOT NULL,
+  "adress" text NOT NULL,
   "zip_code" postal_code_fr NOT NULL,
   "city" text NOT NULL,
   "number" phone_number_fr NOT NULL,

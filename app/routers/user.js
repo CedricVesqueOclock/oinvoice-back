@@ -13,7 +13,7 @@ router
 router
     .route('/:id(\\d+)')
     .get(controllerHandler(controller.getOne))
-    .patch(controllerHandler(controller.update))
+    .patch(controllerHandler(controller.modify))
     .delete(controllerHandler(controller.delete));
 
 module.exports = router;

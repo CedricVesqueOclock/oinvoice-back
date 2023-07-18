@@ -17,17 +17,30 @@ GET {{ endpoint }}user/2
 ### Créer un user en JSON
 POST {{ endpoint }}user
 content-type: application/json
+
 {
     "mail": "user3@gmail.co",
     "password": "SecurePassword456!",
-		"siret": "Null",
-		"siren": "Null",
+		"siret": "564185625",
+		"siren": "15789635269842",
 		"name": "Petite Fleur",
 		"adress": "752 Prout St",
 	  "zip_code": "45644",
 	  "city": "city3",
 	  "number": "0658634159"
 }
+
+### Modifier un user
+PATCH {{ endpoint }}user/6
+content-type: application/json
+
+{
+    "name": "Grosse Fleur"
+}
+
+
+
+
 
 #########################
 #      CLient       #
