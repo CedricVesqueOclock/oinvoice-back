@@ -12,7 +12,22 @@
 GET {{ endpoint }}user
 
 ## Récupérér un user par son id
-GET {{ endpoint }}user/1
+GET {{ endpoint }}user/2
+
+### Créer un user en JSON
+POST {{ endpoint }}user
+content-type: application/json
+{
+    "mail": "user3@gmail.co",
+    "password": "SecurePassword456!",
+		"siret": "Null",
+		"siren": "Null",
+		"name": "Petite Fleur",
+		"adress": "752 Prout St",
+	  "zip_code": "45644",
+	  "city": "city3",
+	  "number": "0658634159"
+}
 
 #########################
 #      CLient       #
