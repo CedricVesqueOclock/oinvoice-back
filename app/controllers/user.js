@@ -10,7 +10,17 @@ module.exports = {
      * @returns Route API JSON response
      */
     async getAll(_, res) {
-        const categories = await userDataMapper.findAll();
-        return res.json(categories);
+        const users = await userDataMapper.findAll();
+        return res.json(users);
+    },
+
+    async getOne(req, res) {
+        const user = await userDataMapper.findByPk(req.params.id);
+
+        if (!user) {
+            throw new Error('User not found', { statusCode: 404 });
+        }
+
+        return res.json(user);
     },
 };

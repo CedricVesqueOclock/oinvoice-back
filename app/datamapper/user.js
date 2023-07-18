@@ -15,11 +15,26 @@ const client = require('../config/db');
 
 module.exports = {
     /**
-   * Récupère tout sans filtre ni ordre
-   * @returns Tous les categories dans la base de donnée
-   */
+     * Récupère tout sans filtre ni ordre
+     * @returns Tous les categories dans la base de donnée
+    */
     async findAll() {
-        const result = await client.query('SELECT * FROM user');
+        const result = await client.query('SELECT * FROM "user"');
         return result.rows;
+    },
+
+    /**
+     * Récupère par sont id
+     * @param {number} userId - L'id de la categorie souhaité
+     * @returns La categorie souhaité ou null si aucune categorie à cet id
+     */
+    async findByPk(userId) {
+        const result = await client.query('SELECT * FROM "user" WHERE id = $1', [userId]);
+
+        if (result.rowCount === 0) {
+            return undefined;
+        }
+
+        return result.rows[0];
     },
 };

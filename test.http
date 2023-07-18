@@ -9,4 +9,17 @@
 #########################
 
 ### liste des users
-GET {{ endpoint }}/user
+GET {{ endpoint }}user
+
+## Récupérér un user par son id
+GET {{ endpoint }}user/1
+
+#########################
+#      CLient       #
+#########################
+
+### liste des users
+GET {{ endpoint }}client
+
+## Récupérér un user par son id
+GET {{ endpoint }}user/1
