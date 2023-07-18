@@ -10,7 +10,7 @@ module.exports = {
      * @returns Route API JSON response
      */
     async getAll(_, res) {
-        const categories = await userDataMapper.findAll();
-        return res.json(categories);
+        const user = await userDataMapper.findAll();
+        return res.json(user);
     },
 };
