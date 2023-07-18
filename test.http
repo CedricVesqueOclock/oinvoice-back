@@ -2,7 +2,7 @@
 # Fichier de test des routes HTTP de l'API
 #######################################################
 
-@endpoint = http://localhost:{{$dotenv PORT}}/api
+@endpoint = http://localhost:3000/
 
 #########################
 #      User       #
