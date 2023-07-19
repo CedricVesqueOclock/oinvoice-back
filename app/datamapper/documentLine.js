@@ -51,4 +51,16 @@ module.exports = {
 
         return savedDocumentLine.rows[0];
     },
+    async delete(id) {
+        try {
+            await client.query('BEGIN');
+            const deleteQuery = 'DELETE FROM "document_line" WHERE id = $1 RETURNING "document_line"."id"';
+            const deleteValues = [id];
+            await client.query(deleteQuery, deleteValues);
+            await client.query('COMMIT');
+        } catch (error) {
+            await client.query('ROLLBACK');
+            throw new Error(error);
+        }
+    },
 };

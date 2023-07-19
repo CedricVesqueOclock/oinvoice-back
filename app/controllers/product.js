@@ -32,4 +32,13 @@ module.exports = {
         const savedProduct = await productDataMapper.update(req.params.id, req.body);
         return res.json(savedProduct);
     },
+    async delete(req, res) {
+        const deleted = await productDataMapper.delete(req.params.id);
+
+        if (!deleted) {
+            throw new Error('This product does not exists', { statusCode: 404 });
+        }
+        // No Content
+        return res.status(204).json();
+    },
 };

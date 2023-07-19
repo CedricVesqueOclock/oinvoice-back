@@ -52,4 +52,16 @@ module.exports = {
 
         return savedProduct.rows[0];
     },
+    async delete(id) {
+        try {
+            await client.query('BEGIN');
+            const deleteQuery = 'DELETE FROM "product" WHERE id = $1 RETURNING "product"."id"';
+            const deleteValues = [id];
+            await client.query(deleteQuery, deleteValues);
+            await client.query('COMMIT');
+        } catch (error) {
+            await client.query('ROLLBACK');
+            throw new Error(error);
+        }
+    },
 };

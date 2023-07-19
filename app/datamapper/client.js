@@ -57,4 +57,16 @@ module.exports = {
 
         return savedClient.rows[0];
     },
+    async delete(id) {
+        try {
+            await clientDb.query('BEGIN');
+            const deleteQuery = 'DELETE FROM "client" WHERE id = $1 RETURNING "client"."id"';
+            const deleteValues = [id];
+            await clientDb.query(deleteQuery, deleteValues);
+            await clientDb.query('COMMIT');
+        } catch (error) {
+            await clientDb.query('ROLLBACK');
+            throw new Error(error);
+        }
+    },
 };
