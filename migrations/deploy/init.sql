@@ -49,7 +49,7 @@ CREATE TABLE "document" (
   "order_date" timestamptz NOT NULL DEFAULT now(),
   "delivry_date" timestamptz,
   "created_at" timestamptz NOT NULL DEFAULT now(),
-  "user_id" int NOT NULL REFERENCES "user"("id")
+  "user_id" int NOT NULL REFERENCES "user"("id") ON DELETE CASCADE
 );
 
 CREATE TABLE "client" (
@@ -63,7 +63,7 @@ CREATE TABLE "client" (
   "zip_code" postal_code_fr NOT NULL,
   "city" text NOT NULL,
   "number" phone_number_fr NOT NULL,
-  "user_id" INT NOT NULL REFERENCES "user"("id"),
+  "user_id" INT NOT NULL REFERENCES "user"("id") ON DELETE CASCADE,
   "created_at" timestamptz NOT NULL DEFAULT now(),
   "updated_at" timestamptz
 );
@@ -75,7 +75,7 @@ CREATE TABLE "product" (
   "category" text NOT NULL,
   "price_ht" decimal(10,2) NOT NULL,
   "rate" int NOT NULL,
-  "user_id" INT NOT NULL REFERENCES "user"("id"),
+  "user_id" INT NOT NULL REFERENCES "user"("id") ON DELETE CASCADE,
   "created_at" timestamptz NOT NULL DEFAULT now(),
   "updated_at" timestamptz
 );
@@ -84,7 +84,7 @@ CREATE TABLE "document_line" (
   "id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   "quantity" int NOT NULL,
   "price" decimal(10,2) NOT NULL,
-  "document_id" INT NOT NULL REFERENCES "document"("id"),
+  "document_id" INT NOT NULL REFERENCES "document"("id") ON DELETE CASCADE,
   "client_id" INT NOT NULL REFERENCES "client"("id"),
   "product_id" INT NOT NULL REFERENCES "product"("id"),
   "created_at" timestamptz NOT NULL DEFAULT now(),

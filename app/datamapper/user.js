@@ -59,12 +59,13 @@ module.exports = {
     async delete(id) {
         try {
             await client.query('BEGIN');
-            const result = await client.query('DELETE FROM "user" WHERE id = $1 RETURNING "user"."id"', [id]);
+            const deleteQuery = 'DELETE FROM "user" WHERE id = $1 RETURNING "user"."id"';
+            const deleteValues = [id];
+            await client.query(deleteQuery, deleteValues);
             await client.query('COMMIT');
-            return result.rowCount;
         } catch (error) {
             await client.query('ROLLBACK');
-            throw error;
+            throw new Error(error);
         }
     },
 };
