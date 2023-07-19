@@ -13,11 +13,6 @@ DROP TABLE
 DROP DOMAIN
   "rfc_email",
   "postal_code_fr",
-  "posnumeric",
-  "posint",
-  "phone_number_fr",
-  "siret",
-  "siren",
-  "pass";
+  "phone_number_fr";
 
 COMMIT;

@@ -60,7 +60,6 @@ module.exports = {
         try {
             await client.query('BEGIN');
             const result = await client.query('DELETE FROM "user" WHERE id = $1 RETURNING "user"."id"', [id]);
-            console.log(result);
             await client.query('COMMIT');
             return result.rowCount;
         } catch (error) {
