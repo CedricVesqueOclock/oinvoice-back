@@ -9,10 +9,4 @@ DROP TABLE
   "product",
   "document_line";
 
-
-DROP DOMAIN
-  "rfc_email",
-  "postal_code_fr",
-  "phone_number_fr";
-
 COMMIT;

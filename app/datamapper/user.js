@@ -16,6 +16,7 @@ module.exports = {
 
         return result.rows[0];
     },
+
     async insert(user) {
         const savedUser = await client.query(
             `

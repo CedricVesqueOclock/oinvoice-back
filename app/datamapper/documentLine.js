@@ -51,6 +51,7 @@ module.exports = {
 
         return savedDocumentLine.rows[0];
     },
+
     async delete(id) {
         try {
             await client.query('BEGIN');

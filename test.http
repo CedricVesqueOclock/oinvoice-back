@@ -89,7 +89,7 @@ content-type: application/json
 
 {
     "typo": "Graine de sésame",
-    "descripion": "La graine de sésame est une graine oléagineuse, produite par le sésame, une plante de la famille des Pédaliacées largement cultivée pour ses graines.",
+    "description": "La graine de sésame est une graine oléagineuse, produite par le sésame, une plante de la famille des Pédaliacées largement cultivée pour ses graines.",
 		"category": "category3",
 		"price_ht": "1.95",
 		"rate": "5.5",

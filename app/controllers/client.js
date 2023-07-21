@@ -32,11 +32,12 @@ module.exports = {
         const savedClient = await clientDataMapper.update(req.params.id, req.body);
         return res.json(savedClient);
     },
+
     async delete(req, res) {
         const deleted = await clientDataMapper.delete(req.params.id);
 
         if (!deleted) {
-            throw new Error('This user does not exists', { statusCode: 404 });
+            throw new Error('This client does not exists', { statusCode: 404 });
         }
         // No Content
         return res.status(204).json();

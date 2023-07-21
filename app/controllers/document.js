@@ -32,6 +32,7 @@ module.exports = {
         const saveDdocument = await documentDataMapper.update(req.params.id, req.body);
         return res.json(saveDdocument);
     },
+
     async delete(req, res) {
         const deleted = await documentDataMapper.delete(req.params.id);
 

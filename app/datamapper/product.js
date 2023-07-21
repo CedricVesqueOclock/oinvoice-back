@@ -16,6 +16,7 @@ module.exports = {
 
         return result.rows[0];
     },
+
     async insert(product) {
         const savedproduct = await client.query(
             `
@@ -52,6 +53,7 @@ module.exports = {
 
         return savedProduct.rows[0];
     },
+
     async delete(id) {
         try {
             await client.query('BEGIN');

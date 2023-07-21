@@ -27,7 +27,8 @@ export default {
             if (!user) {
                 return null;
             }
-            // Afin d'avoir une sécurité supplémentaire on vérifie que l'ip d'utilisation est la même que
+            // Afin d'avoir une sécurité supplémentaire on vérifie
+            // que l'ip d'utilisation est la même que
             // l'ip de création du token
             if (user.ip !== req.ip) {
                 return null;

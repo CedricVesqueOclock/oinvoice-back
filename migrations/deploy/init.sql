@@ -5,11 +5,11 @@
 BEGIN;
 
 -- Les créations de domaines consistent à crée des verifications sur les données acceptées dans les champs des tables associées.
-CREATE DOMAIN rfc_email AS text
-CHECK (value ~ '^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
+-- CREATE DOMAIN rfc_email AS text
+-- CHECK (value ~ '^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
 
-CREATE DOMAIN postal_code_fr AS text
-CHECK (value ~ '^(?:0[1-9]|[1-8]\d|9[0-8])\d{3}$');
+-- CREATE DOMAIN postal_code_fr AS text
+-- CHECK (value ~ '^(?:0[1-9]|[1-8]\d|9[0-8])\d{3}$');
 
 -- CREATE DOMAIN posnumeric AS numeric(15,4)
 -- CHECK (value >= 0);
@@ -17,8 +17,8 @@ CHECK (value ~ '^(?:0[1-9]|[1-8]\d|9[0-8])\d{3}$');
 -- CREATE DOMAIN posint AS int
 -- CHECK (value >= 0);
 
-CREATE DOMAIN phone_number_fr AS text
-CHECK (value ~ '(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}');
+-- CREATE DOMAIN phone_number_fr AS text
+-- CHECK (value ~ '(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}');
 
 -- CREATE DOMAIN siren AS text
 -- CHECK (value ~ '^\d{14}$');
@@ -30,15 +30,15 @@ CHECK (value ~ '(?:(?:\+|00)33|0)\s*[1-9](?:[\s.-]*\d{2}){4}');
 -- Ces caractéristiques peuvent avoir des contraintes simple de définit directement (text, NOT NULL, UNIQUE) ou peuvent se servir de domaine pour des contraintes plus complexes.
 CREATE TABLE "user" (
   "id" int GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  "mail" rfc_email NOT NULL,
+  "mail" text NOT NULL,
   "password" text NOT NULL,
   "siret" text UNIQUE,
   "siren" text UNIQUE,
   "name" text NOT NULL,
   "adress" text NOT NULL,
-  "zip_code" postal_code_fr NOT NULL,
+  "zip_code" text NOT NULL,
   "city" text NOT NULL,
-  "number" phone_number_fr NOT NULL,
+  "number" text NOT NULL,
   "created_at" timestamptz NOT NULL DEFAULT now(),
   "updated_at" timestamptz
 );
@@ -58,11 +58,11 @@ CREATE TABLE "client" (
   "lastname" text NOT NULL,
   "siret" text UNIQUE,
   "siren" text UNIQUE,
-  "mail" rfc_email NOT NULL,
+  "mail" text NOT NULL,
   "adress" text NOT NULL,
-  "zip_code" postal_code_fr NOT NULL,
+  "zip_code" text NOT NULL,
   "city" text NOT NULL,
-  "number" phone_number_fr NOT NULL,
+  "number" text NOT NULL,
   "user_id" INT NOT NULL REFERENCES "user"("id") ON DELETE CASCADE,
   "created_at" timestamptz NOT NULL DEFAULT now(),
   "updated_at" timestamptz

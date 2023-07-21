@@ -32,4 +32,14 @@ module.exports = {
         const savedDocumentLine = await documentLineDataMapper.update(req.params.id, req.body);
         return res.json(savedDocumentLine);
     },
+
+    async delete(req, res) {
+        const deleted = await documentLineDataMapper.delete(req.params.id);
+
+        if (!deleted) {
+            throw new Error('This documentLine does not exists', { statusCode: 404 });
+        }
+        // No Content
+        return res.status(204).json();
+    },
 };
