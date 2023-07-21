@@ -1,0 +1,4 @@
+%syntax-version=1.0.0
+%project=Gestionnaire-De-Cliente-Et-Facture-Back
+
+init 2023-07-12T08:45:24Z Yann. Demaux <yann.demaux86@gmail.com> # création de la bdd oinvoice

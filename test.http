@@ -1,0 +1,163 @@
+######################################################
+# Fichier de test des routes HTTP de l'API
+#######################################################
+
+@endpoint = http://localhost:3000/
+
+#########################
+#      User       #
+#########################
+
+### liste des users
+GET {{ endpoint }}user
+
+## Récupérér un user par son id
+GET {{ endpoint }}user/2
+
+### Créer un user en JSON
+POST {{ endpoint }}user
+content-type: application/json
+
+{
+    "mail": "user3@gmail.co",
+    "password": "SecurePassword456!",
+		"siret": "564185625",
+		"siren": "15789635269842",
+		"name": "Petite Fleur",
+		"adress": "752 Prout St",
+	  "zip_code": "45644",
+	  "city": "city3",
+	  "number": "0658634159"
+}
+
+### Modifier un user
+PATCH {{ endpoint }}user/6
+content-type: application/json
+
+{
+    "name": "Grosse Fleur"
+}
+
+#########################
+#      CLient       #
+#########################
+
+### liste des clients
+GET {{ endpoint }}client
+
+## Récupérér un client par son id
+GET {{ endpoint }}client/1
+
+### Créer un client en JSON
+POST {{ endpoint }}client
+content-type: application/json
+
+{
+    "firstname": "Client3FirstName",
+    "lastname": "Client3LastName",
+		"siret": "null",
+		"siren": "null",
+		"mail": "client3@gmail.co",
+		"adress": "752 Slip St",
+	  "zip_code": "45644",
+	  "city": "city5",
+	  "number": "0658645659",
+		"user_id": "1"
+}
+
+### Modifier un client
+PATCH {{ endpoint }}user/6
+content-type: application/json
+
+{
+    "firstname": "Mr Bidochon"
+}
+
+#########################
+#      Product       #
+#########################
+
+### liste des produits
+GET {{ endpoint }}produit
+
+## Récupérér un produit par son id
+GET {{ endpoint }}produit/1
+
+### Créer un produit en JSON
+POST {{ endpoint }}produit
+content-type: application/json
+
+{
+    "typo": "Graine de sésame",
+    "description": "La graine de sésame est une graine oléagineuse, produite par le sésame, une plante de la famille des Pédaliacées largement cultivée pour ses graines.",
+		"category": "category3",
+		"price_ht": "1.95",
+		"rate": "5.5",
+		"user_id": "1"
+}
+
+### Modifier un produit
+PATCH {{ endpoint }}produit/6
+content-type: application/json
+
+{
+    "price_ht": "5"
+}
+
+
+#########################
+#      Document       #
+#########################
+
+### liste des documents
+GET {{ endpoint }}document
+
+## Récupérér un document par son id
+GET {{ endpoint }}document/1
+
+### Créer un document en JSON
+POST {{ endpoint }}document
+content-type: application/json
+
+{
+    "type": "invoice",
+		"user_id": "2"
+}
+
+### Modifier un document
+PATCH {{ endpoint }}document/6
+content-type: application/json
+
+{
+    "type": "quotation"
+}
+
+#########################
+#      DocumentLine       #
+#########################
+
+### liste des documentLines
+GET {{ endpoint }}documentline
+
+## Récupérér un documentLine par son id
+GET {{ endpoint }}documentline/1
+
+### Créer un documentLine en JSON
+POST {{ endpoint }}documentline
+content-type: application/json
+
+{
+    "quantity": "3",
+		"price": "200",
+		"document_id": "1",
+		"client_id": "1",
+		"product_id": "1",
+}
+
+### Modifier un documentLine
+PATCH {{ endpoint }}documentline/6
+content-type: application/json
+
+{
+    "quantity": "2"
+}
